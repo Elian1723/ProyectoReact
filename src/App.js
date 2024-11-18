@@ -1,11 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import { Login } from './Components/Login';
-import { Error } from './Components/Error';
+import { RouterGlobal } from './Routes/RouterGlobal';
 
 function App() {
   return (
-    <Error />
+    <RouterGlobal />
   );
 }
 

@@ -1,27 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Container, Col, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+    const [usuario, setUsuario] = useState("");
+    const [clave, setClave] = useState("");
+    const navigate = useNavigate();
+
+    const ValidarUsuario = e => {
+        e.preventDefault();
+
+        if (usuario.trim() === "admin" && clave.trim() === "123") {
+            navigate("/dashboard");
+        }
+        else {
+            alert("Credenciales incorrectas");
+
+            document.querySelector("#inputClave").focus();
+        }
+    }
+
     return (
-        <Container className='p-5 d-flex vh-100 flex-column justify-content-center align-items-center'>
+        <Container className='mt-5 pt-5 d-flex flex-column align-items-center'>
             <h1 className='text-center'>Iniciar sesión</h1>
 
             <Col className='col-12 my-5' md={6} xl={5}>
-                <Form >
+                <Form onSubmit={ValidarUsuario}>
                     <Form.Group className="mb-3">
                         <Form.Label>Nombre de usuario:</Form.Label>
-                        <Form.Control type="text" placeholder="admin" />
+                        <Form.Control id='inputUsuario' type="text" placeholder="admin" value={usuario} onChange={e => setUsuario(e.target.value)} />
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Contraseña:</Form.Label>
-                        <Form.Control type="password" placeholder="123" />
+                        <Form.Control id='inputClave' type="password" placeholder="123" value={clave} onChange={e => setClave(e.target.value)} />
                     </Form.Group>
 
                     <div className='d-flex justify-content-center'>
-                        <Button>Ingresar</Button>
+                        <Button type='submit'>Ingresar</Button>
                     </div>
                 </Form>
             </Col>
         </Container>
-      );
+    );
 }
