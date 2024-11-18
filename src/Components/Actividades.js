@@ -54,7 +54,7 @@ export const Actividades = () => {
           value={duracion}
           onChange={(e) => setDuracion(e.target.value)}
         />
-        <Button className='mt-2'>Agregar</Button>
+        <Button className='mt-2' type='submit'>Agregar</Button>
       </Form>
 
       <div>
@@ -72,7 +72,7 @@ export const Actividades = () => {
               <tr key={actividad.id}>
                 <td>{actividad.id}</td>
                 <td>{actividad.nombre}</td>
-                <td>{actividad.duracion}</td>s
+                <td>{actividad.duracion}</td>
                 <td>
                   <Button variant="danger" onClick={() => eliminarActividad(actividad.id)}>Eliminar</Button>
                 </td>
